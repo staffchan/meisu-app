@@ -7,13 +7,12 @@ from google.oauth2.service_account import Credentials
 # ===== Google Sheets連携（Streamlit Cloud用） =====
 @st.cache_resource
 def connect_to_gsheet():
-    import json
     scope = [
         "https://www.googleapis.com/auth/spreadsheets",
         "https://www.googleapis.com/auth/drive"
     ]
     creds = Credentials.from_service_account_info(
-        json.loads(st.secrets["gcp_service_account"].to_json()),  # ← 修正点
+        dict(st.secrets["gcp_service_account"]),  # ← ここが修正点
         scopes=scope
     )
     client = gspread.authorize(creds)
