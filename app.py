@@ -1,4 +1,5 @@
 import streamlit as st
+st.write("Secretsの中身：", st.secrets.to_dict())
 import pandas as pd
 import os
 import gspread
