@@ -127,17 +127,17 @@ if st.button("検索"):
                 prev3 = meisu3 - 1 if meisu3 > 1 else ""
 
                 try:
-                   st.write("⑦ ⏳ append_row 実行直前")
-                   sheet.append_row([
-                       name,
-                       birthdate,
-                       full_type,
-                       meisu1,
-                       meisu2,
-                       meisu3,
-                       prev1,
-                       prev2,
-                       prev3
+                    st.write("⑦ ⏳ append_row 実行直前")
+                    sheet.append_row([
+                        name,
+                        birthdate,
+                        full_type,
+                        meisu1,
+                        meisu2,
+                        meisu3,
+                        prev1,
+                        prev2,
+                        prev3
                     ])
                     st.write("⑧ ✅ append_row 実行成功")
                     st.success("⑨ ✅ Googleスプレッドシートに保存しました！")
