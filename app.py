@@ -131,5 +131,6 @@ if st.button("検索"):
                     st.success("✅ Googleスプレッドシートに保存しました！")
                 except Exception as e:
                     st.error(f"❌ 保存中にエラーが発生しました: {e}")
+                    st.stop()  # ← これを入れて途中で止めてもOK（debug目的）
     else:
         st.warning("該当するデータが見つかりませんでした。")
