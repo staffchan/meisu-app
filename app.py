@@ -16,7 +16,7 @@ def connect_to_gsheet():
         scopes=scope
     )
     client = gspread.authorize(creds)
-    sheet = client.open("命数記録シート").sheet1("シート1")
+    sheet = client.open("命数記録シート").worksheet("シート1")
     return sheet
 
 sheet = connect_to_gsheet()
