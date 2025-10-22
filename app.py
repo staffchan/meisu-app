@@ -127,10 +127,10 @@ if st.button("検索"):
                 prev3 = meisu3 - 1 if meisu3 > 1 else ""
 
                 try:
-                    st.write("⑦ ⏳ append_row 実行直前")
+                    st.write("📤 append_row() 実行開始")
                     sheet.append_row([
                         name,
-                        birthdate,
+                        f"{selected_year}/{selected_month:02}/{selected_day:02}",
                         full_type,
                         meisu1,
                         meisu2,
@@ -139,10 +139,11 @@ if st.button("検索"):
                         prev2,
                         prev3
                     ])
-                    st.write("⑧ ✅ append_row 実行成功")
-                    st.success("⑨ ✅ Googleスプレッドシートに保存しました！")
+                    st.success("✅ Googleスプレッドシートに保存しました！")
                 except Exception as e:
                     st.error(f"❌ 保存中にエラーが発生しました: {e}")
-                    raise
+                    st.write("🧪 エラー内容ログ出力:")
+                    st.exception(e)
+                    raise e  # ← これで強制的にストップ＆ログ出力
     else:
         st.warning("該当するデータが見つかりませんでした。")
