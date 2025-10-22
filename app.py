@@ -12,7 +12,7 @@ def connect_to_gsheet():
         "https://www.googleapis.com/auth/drive"
     ]
     creds = Credentials.from_service_account_info(
-        dict(st.secrets["gcp_service_account"]),  # ← ここが修正点
+        dict(st.secrets["gcp_service_account"]),
         scopes=scope
     )
     client = gspread.authorize(creds)
@@ -116,10 +116,10 @@ if st.button("検索"):
             if not name:
                 st.warning("名前を入力してください。")
             else:
-                st.write("📝名前が入力されました")
-        　　　　　st.write(f"📅誕生日:{selected_year}/{selected_month:02}/{selected_day:02}")
-        　　　　　st.write(f"💫命数:{meisu1}, {meisu2}, {meisu3}")
-       　　　　　 st.write("📤スプレッドシートに送信中...")
+                st.write("📝 名前が入力されました")
+                st.write(f"📅 誕生日: {selected_year}/{selected_month:02}/{selected_day:02}")
+                st.write(f"💫 命数: {meisu1}, {meisu2}, {meisu3}")
+                st.write("📤 スプレッドシートに送信中...")
 
                 birthdate = f"{selected_year}/{selected_month:02}/{selected_day:02}"
                 prev1 = meisu1 - 1 if meisu1 > 1 else ""
@@ -129,7 +129,7 @@ if st.button("検索"):
                 try:
                     sheet.append_row([
                         name,
-                        f"{selected_year}/{selected_month:02}/{selected_day:02}",
+                        birthdate,
                         full_type,
                         meisu1,
                         meisu2,
@@ -141,6 +141,6 @@ if st.button("検索"):
                     st.success("✅ Googleスプレッドシートに保存しました！")
                 except Exception as e:
                     st.error(f"❌ 保存中にエラーが発生しました: {e}")
-                    st.stop()  # ← これを入れて途中で止めてもOK（debug目的）
+                    st.stop()
     else:
         st.warning("該当するデータが見つかりませんでした。")
