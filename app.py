@@ -117,8 +117,8 @@ if st.button("検索"):
                 st.warning("名前を入力してください。")
             else:
                 st.write("📝名前が入力されました")
-        　　　　　st.write(f"📅誕生日: {selected_year}/{selected_month:02}/{selected_day:02}")
-        　　　　　st.write(f"💫命数: {meisu1}, {meisu2}, {meisu3}")
+        　　　　　st.write(f"📅誕生日:{selected_year}/{selected_month:02}/{selected_day:02}")
+        　　　　　st.write(f"💫命数:{meisu1}, {meisu2}, {meisu3}")
        　　　　　 st.write("📤スプレッドシートに送信中...")
 
                 birthdate = f"{selected_year}/{selected_month:02}/{selected_day:02}"
