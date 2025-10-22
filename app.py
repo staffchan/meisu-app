@@ -141,6 +141,7 @@ if st.button("検索"):
                     st.success("✅ Googleスプレッドシートに保存しました！")
                 except Exception as e:
                     st.error(f"❌ 保存中にエラーが発生しました: {e}")
+                    raise  # ← これ追加して再度実行すれば、赤いエラー画面に出る！
                     st.stop()
     else:
         st.warning("該当するデータが見つかりませんでした。")
