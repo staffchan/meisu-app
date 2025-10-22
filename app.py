@@ -127,21 +127,22 @@ if st.button("検索"):
                 prev3 = meisu3 - 1 if meisu3 > 1 else ""
 
                 try:
-                    st.write("⑦ ⏳ append_row 実行直前")
-                    sheet.append_row([
-                        name,
-                        birthdate,
-                        full_type,
-                        meisu1,
-                        meisu2,
-                        meisu3,
-                        prev1,
-                        prev2,
-                        prev3
-                    ])
-                    st.success("⑧ ✅ Googleスプレッドシートに保存しました！")
-                except Exception as e:
-                    st.error(f"❌ 保存中にエラーが発生しました: {e}")
-                    raise
+                   st.write("⑦ ⏳ append_row 実行直前")
+                   sheet.append_row([
+                       name,
+                       birthdate,
+                       full_type,
+                       meisu1,
+                       meisu2,
+                       meisu3,
+                       prev1,
+                       prev2,
+                       prev3
+                   ])
+                   st.write("⑧ ✅ append_row 実行成功")
+                   st.success("⑨ ✅ Googleスプレッドシートに保存しました！")
+               except Exception as e:
+                   st.error(f"❌ 保存中にエラーが発生しました: {e}")
+                   raise
     else:
         st.warning("該当するデータが見つかりませんでした。")
