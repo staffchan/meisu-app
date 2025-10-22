@@ -20,6 +20,10 @@ def connect_to_gsheet():
     return sheet
 
 sheet = connect_to_gsheet()
+if sheet:
+    st.success("✅ Google Sheet に接続できています")
+else:
+    st.error("❌ Google Sheet に接続できていません")
 
 # ===== 欲の傾向マッピング =====
 yoku_dict = {
