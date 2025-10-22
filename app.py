@@ -138,7 +138,7 @@ if st.button("検索"):
                         prev1,
                         prev2,
                         prev3
-                  　])
+                    ])
                     st.success("⑧ ✅ Googleスプレッドシートに保存しました！")
                 except Exception as e:
                     st.error(f"❌ 保存中にエラーが発生しました: {e}")
