@@ -136,5 +136,30 @@ if st.button("検索"):
                 except Exception as e:
                     st.error(f"❌ 保存中にエラーが発生しました: {e}")
                     st.stop()  # ← これを入れて途中で止めてもOK（debug目的）
+         if st.button("保存する"):
+    　　　　　　st.write("✅ ボタンが押されました")
+    　　　　　　if not name:
+        　　　　　　st.warning("名前を入力してください。")
+    　　　　　　else:
+        　　　　　　st.write("📝 名前が入力されました")
+        　　　　　　st.write(f"📆 誕生日: {selected_year}/{selected_month:02}/{selected_day:02}")
+        　　　　　　st.write(f"💫 命数: {meisu1}, {meisu2}, {meisu3}")
+        　　　　　　st.write("📤 スプレッドシートに送信中...")
+
+       　　　　　　 try:
+            　　　　　　sheet.append_row([
+                　　　　　　name,
+                　　　　　　f"{selected_year}/{selected_month:02}/{selected_day:02}",
+                　　　　　　full_type,
+                　　　　　　meisu1,
+                　　　　　　meisu2,
+                　　　　　　meisu3,
+               　　　　　　 meisu1 - 1 if meisu1 > 1 else "",
+               　　　　　　 meisu2 - 1 if meisu2 > 1 else "",
+                　　　　　　meisu3 - 1 if meisu3 > 1 else ""
+            　　　　　　])
+            　　　　　　st.success("✅ Googleスプレッドシートに保存しました！")
+        　　　　　　except Exception as e:
+            　　　　　　st.exception(e)
     else:
         st.warning("該当するデータが見つかりませんでした。")
