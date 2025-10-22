@@ -108,37 +108,41 @@ if st.button("検索"):
         st.markdown(f"🔹 第三の命数（未来）: {meisu3}")
         st.markdown(f"📖 意味：{meaning}")
         st.markdown(f"🔥 欲の傾向：{yoku}")
+        
+# 先にflagを用意
+submitted_flag = False
 
-        # ===== 保存欄（formでまとめて送信） =====
-        with st.form("save_form"):
-            name = st.text_input("保存する名前（任意）を入力")
-            submitted = st.form_submit_button("保存する")
+with st.form("save_form"):
+    name = st.text_input("保存する名前（任意）を入力")
+    submitted = st.form_submit_button("保存する")
 
-            if submitted:
-                st.write("🟢 フォームが送信されました")
+    if submitted:
+        submitted_flag = True
 
-                if not name:
-                    st.warning("⚠️ 名前を入力してください")
-                else:
-                    st.write("📅 生年月日:", f"{selected_year}/{selected_month:02}/{selected_day:02}")
-                    st.write("💫 命数:", meisu1, meisu2, meisu3)
-                    st.write("📤 append_row() 実行開始")
+# ====== formの外で確認 ======
+if submitted_flag:
+    st.write("🟢 フォームが送信されました【form外】")
 
-                    try:
-                        sheet.append_row([
-                            name,
-                            f"{selected_year}/{selected_month:02}/{selected_day:02}",
-                            full_type,
-                            meisu1,
-                            meisu2,
-                            meisu3,
-                            meisu1 - 1 if meisu1 > 1 else "",
-                            meisu2 - 1 if meisu2 > 1 else "",
-                            meisu3 - 1 if meisu3 > 1 else "",
-                        ])
-                        st.success("✅ Googleスプレッドシートに保存しました！")
-                    except Exception as e:
-                        st.error("❌ 保存エラー発生！")
-                        st.exception(e)
+    if not name:
+        st.warning("⚠️ 名前を入力してください")
     else:
-        st.warning("該当するデータが見つかりませんでした。")
+        st.write("📅 生年月日:", f"{selected_year}/{selected_month:02}/{selected_day:02}")
+        st.write("💫 命数:", meisu1, meisu2, meisu3)
+        st.write("📤 append_row() 実行開始")
+
+        try:
+            sheet.append_row([
+                name,
+                f"{selected_year}/{selected_month:02}/{selected_day:02}",
+                full_type,
+                meisu1,
+                meisu2,
+                meisu3,
+                meisu1 - 1 if meisu1 > 1 else "",
+                meisu2 - 1 if meisu2 > 1 else "",
+                meisu3 - 1 if meisu3 > 1 else "",
+            ])
+            st.success("✅ Googleスプレッドシートに保存しました！")
+        except Exception as e:
+            st.error("❌ 保存エラー発生！")
+            st.exception(e)
