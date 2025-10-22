@@ -112,36 +112,36 @@ if st.button("検索"):
         # ===== 保存欄 =====
         name = st.text_input("保存する名前（任意）を入力")
         if st.button("保存する"):
-            st.write("✅ ボタンが押されました")
+            st.write("① ✅ ボタンが押されました")
             if not name:
-                st.warning("名前を入力してください。")
+                st.warning("② ⚠️ 名前を入力してください。")
             else:
-                st.write("📝 名前が入力されました")
-                st.write(f"📅 誕生日: {selected_year}/{selected_month:02}/{selected_day:02}")
-                st.write(f"💫 命数: {meisu1}, {meisu2}, {meisu3}")
-                st.write("📤 スプレッドシートに送信中...")
-
+                st.write("③ 📝 名前が入力されました")
                 birthdate = f"{selected_year}/{selected_month:02}/{selected_day:02}"
+                st.write(f"④ 📅 誕生日: {birthdate}")
+                st.write(f"⑤ 💫 命数: {meisu1}, {meisu2}, {meisu3}")
+                st.write("⑥ 📤 スプレッドシートに送信中...")
+
                 prev1 = meisu1 - 1 if meisu1 > 1 else ""
                 prev2 = meisu2 - 1 if meisu2 > 1 else ""
                 prev3 = meisu3 - 1 if meisu3 > 1 else ""
 
                 try:
-                    sheet.append_row([
-                        name,
-                        birthdate,
-                        full_type,
-                        meisu1,
-                        meisu2,
-                        meisu3,
-                        prev1,
-                        prev2,
-                        prev3
-                    ])
-                    st.success("✅ Googleスプレッドシートに保存しました！")
-                except Exception as e:
-                    st.error(f"❌ 保存中にエラーが発生しました: {e}")
-                    raise  # ← これ追加して再度実行すれば、赤いエラー画面に出る！
-                    st.stop()
+                   st.write("⑦ ⏳ append_row 実行直前")
+                   sheet.append_row([
+                       name,
+                       birthdate,
+                       full_type,
+                       meisu1,
+                       meisu2,
+                       meisu3,
+                       prev1,
+                       prev2,
+                       prev3
+                   ])
+                   st.success("⑧ ✅ Googleスプレッドシートに保存しました！")
+               except Exception as e:
+                   st.error(f"❌ 保存中にエラーが発生しました: {e}")
+                   raise
     else:
         st.warning("該当するデータが見つかりませんでした。")
