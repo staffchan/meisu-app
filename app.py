@@ -111,6 +111,9 @@ if st.button("検索"):
 
         # ===== 保存欄 =====
         name = st.text_input("保存する名前（任意）を入力")
+        st.write("🟡 保存ボタン表示中")  # 常に表示されるログ
+        if st.button("保存する"):
+            st.write("🟢 保存ボタンが押されました")  # 押されたときだけ表示
         if st.button("保存する"):
             st.write("① ✅ ボタンが押されました")
             if not name:
