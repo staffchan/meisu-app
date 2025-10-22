@@ -93,6 +93,8 @@ if st.button("検索"):
         meisu2 = int(float(row['命数2']))
         meisu3 = int(float(row['命数3']))
 
+        st.write("💫 命数:", meisu1, meisu2, meisu3)
+
         kin_gin = "金" if selected_year % 2 == 0 else "銀"
         star_type = get_star_type(meisu2)
         full_type = f"{kin_gin}の{star_type}"
