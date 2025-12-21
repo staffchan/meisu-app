@@ -3,14 +3,12 @@ import pandas as pd
 import os
 import gspread
 from google.oauth2.service_account import Credentials
-from dotenv import load_dotenv
 from datetime import date, timedelta
 from pathlib import Path
 
 # =============================
 # .env 読み込み
 # =============================
-load_dotenv()
 
 # =============================
 # Google Sheets 連携
@@ -22,13 +20,13 @@ def connect_to_gsheet():
         "https://www.googleapis.com/auth/drive",
     ]
 
-    private_key = os.getenv("GCP_PRIVATE_KEY", "").replace("\\n", "\n")
-    client_email = os.getenv("GCP_CLIENT_EMAIL")
-    sheet_name = os.getenv("SHEET_NAME", "命数記録シート")
-    tab_name = os.getenv("SHEET_TAB_NAME", "シート1")
+    private_key = get_setting("GCP_PRIVATE_KEY", "").replace("\\n", "\n")
+    client_email = get_setting("GCP_CLIENT_EMAIL")
+    sheet_name = get_setting("SHEET_NAME", "命数記録シート")
+    tab_name = get_setting("SHEET_TAB_NAME", "シート1")
 
     if not private_key or not client_email:
-        st.error("❌ Google連携情報（GCPキーまたはメール）が見つかりません。")
+        st.error("❌ Google連携情報（Secrets）が見つかりません。")
         st.stop()
 
     service_account_info = {
@@ -47,6 +45,23 @@ def connect_to_gsheet():
         st.error(f"❌ シート接続エラー: {e}")
         st.stop()
 
+    service_account_info = {
+        "type": "service_account",
+        "private_key": private_key,
+        "client_email": client_email,
+        "token_uri": "https://oauth2.googleapis.com/token",
+    }
+
+    creds = Credentials.from_service_account_info(service_account_info, scopes=scope)
+    client = gspread.authorize(creds)
+
+    try:
+        return client.open(sheet_name).worksheet(tab_name)
+    except Exception as e:
+        st.error(f"❌ シート接続エラー: {e}")
+        st.stop()
+def get_setting(key: str, default: str = ""):
+    return st.secrets.get(key, os.getenv(key, default))
 sheet = connect_to_gsheet()
 
 # =============================
