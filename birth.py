@@ -131,7 +131,7 @@ button[title="Close sidebar"] {{
   [data-testid="stAppViewContainer"],
   [data-testid="stApp"] {{
     background-size: cover !important;
-    background-position: center 20% !important;
+    background-position: center 50% !important;
     min-height: 100vh !important;
   }}
 
