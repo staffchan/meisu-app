@@ -141,7 +141,7 @@ button[title="Close sidebar"] {{
 
   /* 👇 文字ブロックを少し下＆中央寄りに */
   .block-container {{
-    padding-top: 7.5rem !important;   /* ← 6.5 → 7.5 */
+    padding-top: 8rem !important;   /*
     padding-bottom: 6rem !important;
   }}
 }}
