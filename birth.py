@@ -124,6 +124,23 @@ button[title="Close sidebar"] {{
 [data-testid="stHeader"] button {{
   display: none !important;
 }}
+
+/* ===== スマホ用だけ背景を調整 ===== */
+@media (max-width: 768px) {
+
+  /* 背景画像を大きく・見やすく */
+  [data-testid="stAppViewContainer"],
+  [data-testid="stApp"] {
+    background-size: cover !important;   /* ← スマホでは cover */
+    background-position: center top !important;
+    min-height: 100vh !important;
+  }
+
+  /* 上の余白を少し減らして背景を前に出す */
+  .block-container {
+    padding-top: 6rem !important;  /* PCより少し小さく */
+  }
+}
 </style>
 """,
     unsafe_allow_html=True,
