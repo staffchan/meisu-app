@@ -96,16 +96,34 @@ h1 {{
   margin-top: 1.2rem;
 }}
 
-/* === スマホで出る sidebar トグル（≡ / keyboard_double_arrow_right）を消す === */
-[data-testid="stSidebarCollapsedControl"] {{
-  display: none !important;
-}}
+/* === スマホ上部に出る sidebar トグル（文字で keyboard_double_arrow_right になるやつ）を徹底的に消す === */
 
-/* 念のため（Streamlitのバージョン差異対策） */
-button[title="Open sidebar"],
-button[title="Close sidebar"] {{
+/* 既存 testid（あなたの環境） */
+[data-testid="stSidebarCollapsedControl"] {
   display: none !important;
-}}
+}
+[data-testid="stSidebarCollapsedControl"] * {
+  display: none !important;
+}
+
+/* Streamlitの版差対策（別名になることがある） */
+div[class*="sidebarCollapsedControl"],
+div[class*="collapsedControl"] {
+  display: none !important;
+}
+
+/* ボタンがaria-labelで出る版 */
+button[aria-label="Show sidebar"],
+button[aria-label="Hide sidebar"],
+button[title="Open sidebar"],
+button[title="Close sidebar"] {
+  display: none !important;
+}
+
+/* それでも残るときの最終手段：ヘッダー左側のコントロールを消す */
+[data-testid="stHeader"] button {
+  display: none !important;
+}
 </style>
 """,
     unsafe_allow_html=True,

@@ -200,15 +200,33 @@ h1, h2, h3, h4, h5, h6, button, input, textarea, select {
   font-weight: 700 !important;
 }
 
-/* === スマホで出る「keyboard_double_arrow_right」（サイドバー開閉）を消す === */
+/* === スマホ上部に出る sidebar トグル（文字で keyboard_double_arrow_right になるやつ）を徹底的に消す === */
+
+/* 既存 testid（あなたの環境） */
 [data-testid="stSidebarCollapsedControl"] {
-    display: none !important;
+  display: none !important;
+}
+[data-testid="stSidebarCollapsedControl"] * {
+  display: none !important;
 }
 
-/* 念のため（Streamlitの版によってIDが違うことがある） */
+/* Streamlitの版差対策（別名になることがある） */
+div[class*="sidebarCollapsedControl"],
+div[class*="collapsedControl"] {
+  display: none !important;
+}
+
+/* ボタンがaria-labelで出る版 */
+button[aria-label="Show sidebar"],
+button[aria-label="Hide sidebar"],
 button[title="Open sidebar"],
 button[title="Close sidebar"] {
-    display: none !important;
+  display: none !important;
+}
+
+/* それでも残るときの最終手段：ヘッダー左側のコントロールを消す */
+[data-testid="stHeader"] button {
+  display: none !important;
 }
 
 </style>
