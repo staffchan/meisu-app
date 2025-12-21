@@ -199,16 +199,18 @@ h1, h2, h3, h4, h5, h6, button, input, textarea, select {
   padding: 8px 18px !important;
   font-weight: 700 !important;
 }
+
 /* === スマホで出る「keyboard_double_arrow_right」（サイドバー開閉）を消す === */
 [data-testid="stSidebarCollapsedControl"] {
-  display: none !important;
+    display: none !important;
 }
 
 /* 念のため（Streamlitの版によってIDが違うことがある） */
 button[title="Open sidebar"],
 button[title="Close sidebar"] {
-  display: none !important;
+    display: none !important;
 }
+
 </style>
 """, unsafe_allow_html=True)
 

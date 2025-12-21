@@ -95,19 +95,20 @@ h1 {{
   font-weight: 700 !important;
   margin-top: 1.2rem;
 }}
-/* === スマホで出る「keyboard_double_arrow_right」（サイドバー開閉）を消す === */
-[data-testid="stSidebarCollapsedControl"] {
-  display: none !important;
-}
 
-/* 念のため（Streamlitの版によってIDが違うことがある） */
-button[title="Open sidebar"],
-button[title="Close sidebar"] {
+/* === スマホで出る sidebar トグル（≡ / keyboard_double_arrow_right）を消す === */
+[data-testid="stSidebarCollapsedControl"] {{
   display: none !important;
-}
+}}
+
+/* 念のため（Streamlitのバージョン差異対策） */
+button[title="Open sidebar"],
+button[title="Close sidebar"] {{
+  display: none !important;
+}}
 </style>
 """,
-    unsafe_allow_html=True
+    unsafe_allow_html=True,
 )
 
 # -----------------------------
