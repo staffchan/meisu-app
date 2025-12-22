@@ -228,6 +228,21 @@ button[title="Close sidebar"] {
 [data-testid="stHeader"] button {
   display: none !important;
 }
+/* === ダークモードのときだけ、明るいカード内の文字を黒寄りに固定 === */
+@media (prefers-color-scheme: dark) {{
+  .meisu-card,
+  .meisu-card * ,
+  .meisu-pill,
+  .meisu-pill *  {{
+    color: rgba(0,0,0,0.82) !important;
+  }}
+
+  /* もし他にも“白背景の箱”があるならここに足す */
+  .birth-form,
+  .birth-form *  {{
+    color: rgba(0,0,0,0.82) !important;
+  }}
+}}
 
 </style>
 """, unsafe_allow_html=True)
