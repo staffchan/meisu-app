@@ -145,21 +145,34 @@ button[title="Close sidebar"] {{
     padding-bottom: 6rem !important;
   }}
 }}
-/* === ダークモードのときだけ、明るいカード内の文字を黒寄りに固定 === */
-@media (prefers-color-scheme: dark) {{
-  .meisu-card,
-  .meisu-card * ,
-  .meisu-pill,
-  .meisu-pill *  {{
-    color: rgba(0,0,0,0.82) !important;
-  }}
+/* ===== ダークテーマでも“カード内だけ”文字を黒固定 ===== */
 
-  /* もし他にも“白背景の箱”があるならここに足す */
-  .birth-form,
-  .birth-form *  {{
-    color: rgba(0,0,0,0.82) !important;
-  }}
+/* Streamlitのダークテーマで入りやすい属性/クラスを全部拾う */
+html[data-theme="dark"] .meisu-card,
+html[data-theme="dark"] .meisu-card * ,
+body[data-theme="dark"] .meisu-card,
+body[data-theme="dark"] .meisu-card * ,
+[data-testid="stApp"][data-theme="dark"] .meisu-card,
+[data-testid="stApp"][data-theme="dark"] .meisu-card * ,
+[data-testid="stAppViewContainer"][data-theme="dark"] .meisu-card,
+[data-testid="stAppViewContainer"][data-theme="dark"] .meisu-card * {{
+
+  color: rgba(0,0,0,0.85) !important;
 }}
+
+/* pillも念押し */
+html[data-theme="dark"] .meisu-pill,
+html[data-theme="dark"] .meisu-pill * ,
+body[data-theme="dark"] .meisu-pill,
+body[data-theme="dark"] .meisu-pill * ,
+[data-testid="stApp"][data-theme="dark"] .meisu-pill,
+[data-testid="stApp"][data-theme="dark"] .meisu-pill * ,
+[data-testid="stAppViewContainer"][data-theme="dark"] .meisu-pill,
+[data-testid="stAppViewContainer"][data-theme="dark"] .meisu-pill * {{
+
+  color: rgba(0,0,0,0.85) !important;
+}}
+
 </style>
 """,
     unsafe_allow_html=True,
