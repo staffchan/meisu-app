@@ -145,32 +145,15 @@ button[title="Close sidebar"] {{
     padding-bottom: 6rem !important;
   }}
 }}
-/* ===== ダークテーマでも“カード内だけ”文字を黒固定 ===== */
-
-/* Streamlitのダークテーマで入りやすい属性/クラスを全部拾う */
-html[data-theme="dark"] .meisu-card,
-html[data-theme="dark"] .meisu-card * ,
-body[data-theme="dark"] .meisu-card,
-body[data-theme="dark"] .meisu-card * ,
-[data-testid="stApp"][data-theme="dark"] .meisu-card,
-[data-testid="stApp"][data-theme="dark"] .meisu-card * ,
-[data-testid="stAppViewContainer"][data-theme="dark"] .meisu-card,
-[data-testid="stAppViewContainer"][data-theme="dark"] .meisu-card * {{
-
-  color: rgba(0,0,0,0.85) !important;
-}}
-
-/* pillも念押し */
-html[data-theme="dark"] .meisu-pill,
-html[data-theme="dark"] .meisu-pill * ,
-body[data-theme="dark"] .meisu-pill,
-body[data-theme="dark"] .meisu-pill * ,
-[data-testid="stApp"][data-theme="dark"] .meisu-pill,
-[data-testid="stApp"][data-theme="dark"] .meisu-pill * ,
-[data-testid="stAppViewContainer"][data-theme="dark"] .meisu-pill,
-[data-testid="stAppViewContainer"][data-theme="dark"] .meisu-pill * {{
-
-  color: rgba(0,0,0,0.85) !important;
+@media (prefers-color-scheme: dark) {{
+  /* タイトルだけ */
+  [data-testid="stMarkdownContainer"] h1 {{
+    color: rgba(0,0,0,0.88) !important;
+  }}
+  /* ラベルだけ */
+  .birth-form label {{
+    color: rgba(0,0,0,0.88) !important;
+  }}
 }}
 
 </style>
