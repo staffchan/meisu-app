@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>命数占い</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hannari&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section id="birth-screen" class="screen birth-screen" aria-labelledby="birth-title">
+        <div class="birth-panel">
+          <h1 id="birth-title">生年月日を入力してください</h1>
+          <form id="birth-form" class="birth-form">
+            <label>
+              <span>西暦（年）</span>
+              <select id="birth-year" name="year" required></select>
+            </label>
+            <label>
+              <span>月</span>
+              <select id="birth-month" name="month" required></select>
+            </label>
+            <label>
+              <span>日</span>
+              <select id="birth-day" name="day" required></select>
+            </label>
+            <button class="primary-button" type="submit">次へ</button>
+          </form>
+          <p id="load-message" class="status-message" role="status"></p>
+        </div>
+      </section>
+
+      <section id="result-screen" class="screen result-screen is-hidden" aria-labelledby="result-title" hidden>
+        <button id="back-button" class="ghost-button" type="button">生年月日入力へ戻る</button>
+
+        <p id="birthdate-label" class="caption"></p>
+        <h1 id="result-title" class="type-title"></h1>
+
+        <div class="meisu-card" aria-label="命数">
+          <div class="meisu-main">命数 <strong id="main-meisu"></strong></div>
+          <div class="meisu-row">
+            <div class="meisu-pill">第一の命数：<strong id="meisu-1"></strong></div>
+            <div class="meisu-pill">第二の命数：<strong id="meisu-2"></strong></div>
+            <div class="meisu-pill">第三の命数：<strong id="meisu-3"></strong></div>
+          </div>
+        </div>
+
+        <div class="type-image-wrap">
+          <img id="type-image" alt="">
+        </div>
+
+        <article class="fortune-text">
+          <h2 id="fortune-heading"></h2>
+          <h3 id="fortune-theme"></h3>
+
+          <section>
+            <h3>基本性格</h3>
+            <p id="basic-text"></p>
+          </section>
+          <section>
+            <h3>恋愛運</h3>
+            <p id="love-text"></p>
+          </section>
+          <section>
+            <h3>仕事運</h3>
+            <p id="work-text"></p>
+          </section>
+        </article>
+
+        <section class="save-panel" aria-labelledby="save-title">
+          <h2 id="save-title">結果を保存する</h2>
+          <form id="save-form" class="save-form">
+            <label>
+              <span>保存する名前</span>
+              <input id="save-name" name="name" type="text" autocomplete="name" required>
+            </label>
+            <button class="primary-button" type="submit">保存する</button>
+          </form>
+          <p id="save-message" class="status-message" role="status"></p>
+        </section>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>

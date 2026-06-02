@@ -1,0 +1,280 @@
+:root {
+  color-scheme: light;
+  --ink: #2c2925;
+  --muted: #6f675e;
+  --paper: rgba(255, 255, 255, 0.78);
+  --paper-strong: rgba(255, 255, 255, 0.92);
+  --line: rgba(92, 71, 55, 0.16);
+  --shadow: rgba(54, 37, 26, 0.14);
+  --accent: #8e5f6f;
+  --accent-dark: #684153;
+  --leaf: #66806a;
+  --mist: #eef2ed;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+}
+
+body {
+  min-height: 100%;
+  margin: 0;
+  color: var(--ink);
+  font-family: "Hannari", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  background: #f5f0e9 url("data/birth_background.png") center 72px / min(920px, 118vw) auto no-repeat;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.app-shell {
+  width: min(900px, calc(100% - 32px));
+  margin: 0 auto;
+}
+
+.screen {
+  min-height: 100vh;
+  padding: 72px 0 56px;
+}
+
+.birth-screen {
+  display: grid;
+  align-items: start;
+  padding-top: 136px;
+}
+
+.screen.is-hidden {
+  display: none;
+}
+
+.birth-panel {
+  width: min(520px, 100%);
+}
+
+h1,
+h2,
+h3,
+p {
+  overflow-wrap: anywhere;
+}
+
+h1 {
+  margin: 0 0 28px;
+  font-size: clamp(30px, 3.4vw, 42px);
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.birth-form,
+.save-form {
+  display: grid;
+  gap: 18px;
+}
+
+label {
+  display: grid;
+  gap: 8px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+select,
+input {
+  width: min(420px, 100%);
+  min-height: 48px;
+  padding: 10px 14px;
+  color: var(--ink);
+  background: var(--paper-strong);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  outline: none;
+  box-shadow: 0 10px 24px rgba(54, 37, 26, 0.06);
+}
+
+select:focus,
+input:focus {
+  border-color: rgba(142, 95, 111, 0.58);
+  box-shadow: 0 0 0 3px rgba(142, 95, 111, 0.16);
+}
+
+.primary-button,
+.ghost-button {
+  min-height: 44px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  padding: 9px 20px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.primary-button {
+  width: fit-content;
+  color: #fffaf7;
+  background: linear-gradient(135deg, var(--accent), var(--leaf));
+  box-shadow: 0 12px 24px rgba(104, 65, 83, 0.22);
+}
+
+.primary-button:disabled {
+  cursor: wait;
+  opacity: 0.72;
+}
+
+.ghost-button {
+  margin-bottom: 24px;
+  color: var(--accent-dark);
+  background: rgba(255, 255, 255, 0.72);
+  border-color: var(--line);
+}
+
+.caption {
+  margin: 0 0 8px;
+  color: var(--muted);
+}
+
+.type-title {
+  margin-bottom: 18px;
+}
+
+.meisu-card,
+.save-panel {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 18px 34px var(--shadow);
+  backdrop-filter: blur(12px);
+}
+
+.meisu-card {
+  padding: 18px;
+  margin: 0 0 24px;
+}
+
+.meisu-main {
+  margin-bottom: 12px;
+  font-size: 28px;
+}
+
+.meisu-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.meisu-pill {
+  padding: 9px 12px;
+  background: var(--mist);
+  border: 1px solid rgba(102, 128, 106, 0.18);
+  border-radius: 999px;
+}
+
+.type-image-wrap {
+  text-align: center;
+  margin: 4px 0 30px;
+}
+
+.type-image-wrap img {
+  width: min(360px, 82vw);
+  height: auto;
+}
+
+.fortune-text {
+  display: grid;
+  gap: 16px;
+}
+
+.fortune-text h2 {
+  margin: 0;
+  font-size: 27px;
+  line-height: 1.4;
+}
+
+.fortune-text h3 {
+  margin: 0 0 8px;
+  font-size: 21px;
+  line-height: 1.45;
+}
+
+.fortune-text p {
+  margin: 0;
+  line-height: 2;
+}
+
+.fortune-text section {
+  padding: 2px 0;
+}
+
+.save-panel {
+  margin-top: 34px;
+  padding: 20px;
+}
+
+.save-panel h2 {
+  margin: 0 0 18px;
+  font-size: 24px;
+}
+
+.status-message {
+  min-height: 26px;
+  margin: 14px 0 0;
+  color: var(--accent-dark);
+  line-height: 1.6;
+}
+
+.status-message.is-error {
+  color: #9a3d3d;
+}
+
+@media (max-width: 760px) {
+  body {
+    background-size: auto 86vh;
+    background-position: center 64px;
+  }
+
+  .app-shell {
+    width: min(100% - 24px, 900px);
+  }
+
+  .screen {
+    padding: 48px 0 40px;
+  }
+
+  .birth-screen {
+    padding-top: 118px;
+  }
+
+  h1 {
+    font-size: 30px;
+  }
+
+  .meisu-row,
+  .birth-form,
+  .save-form {
+    gap: 12px;
+  }
+
+  .primary-button,
+  .ghost-button,
+  select,
+  input {
+    width: 100%;
+  }
+
+  .fortune-text h2 {
+    font-size: 24px;
+  }
+}
